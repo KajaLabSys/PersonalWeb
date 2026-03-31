@@ -1,5 +1,8 @@
 const root = document.body;
 const toggle = document.querySelector(".theme-toggle");
+const menuToggle = document.querySelector(".menu-toggle");
+const siteHeader = document.querySelector(".site-header");
+const siteNav = document.querySelector(".site-nav");
 const savedTheme = localStorage.getItem("theme");
 
 if (savedTheme) {
@@ -23,6 +26,51 @@ toggle?.addEventListener("click", () => {
     localStorage.setItem("theme", nextTheme);
     syncThemeButton();
 });
+
+const syncMenuButton = (open) => {
+    menuToggle?.setAttribute("aria-expanded", String(open));
+    menuToggle?.setAttribute("aria-label", open ? "Zavřít navigaci" : "Otevřít navigaci");
+    siteHeader?.classList.toggle("is-menu-open", open);
+};
+
+const closeMenu = () => {
+    syncMenuButton(false);
+};
+
+menuToggle?.addEventListener("click", () => {
+    const nextOpen = menuToggle.getAttribute("aria-expanded") !== "true";
+    syncMenuButton(nextOpen);
+});
+
+siteNav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+});
+
+document.addEventListener("click", (event) => {
+    if (!siteHeader?.classList.contains("is-menu-open")) {
+        return;
+    }
+
+    if (siteHeader.contains(event.target)) {
+        return;
+    }
+
+    closeMenu();
+});
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        closeMenu();
+    }
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 980) {
+        closeMenu();
+    }
+});
+
+syncMenuButton(false);
 
 const observer = new IntersectionObserver((entries) => {
     for (const entry of entries) {

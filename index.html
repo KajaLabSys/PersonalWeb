@@ -45,6 +45,11 @@
     <div class="page-shell">
         <header class="site-header">
             <div class="container header-inner">
+                <button class="menu-toggle" type="button" aria-label="Otevřít navigaci" aria-expanded="false" aria-controls="site-nav">
+                    <span class="menu-toggle__line" aria-hidden="true"></span>
+                    <span class="menu-toggle__line" aria-hidden="true"></span>
+                    <span class="menu-toggle__line" aria-hidden="true"></span>
+                </button>
                 <a class="brand" href="#top" aria-label="Karel Janda">
                     <span class="brand-mark" aria-hidden="true">
                         <svg class="brand-home-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -57,7 +62,7 @@
                         <span>KajaLab</span>
                     </span>
                 </a>
-                <nav class="site-nav" aria-label="Hlavní navigace">
+                <nav class="site-nav" id="site-nav" aria-label="Hlavní navigace">
                     <a href="#specializace">Specializace</a>
                     <a href="#sluzby">Služby</a>
                     <a href="#pristup">Přístup</a>
@@ -66,7 +71,18 @@
                 </nav>
                 <div class="header-controls">
                     <button class="theme-toggle" type="button" aria-label="Přepnout motiv" aria-pressed="false">
-                        <span>Motiv</span>
+                        <span class="theme-toggle__label">Motiv</span>
+                        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="4.25" stroke="currentColor" stroke-width="1.8"/>
+                                <path d="M12 2.75V5.1M12 18.9V21.25M21.25 12H18.9M5.1 12H2.75M18.55 5.45L16.9 7.1M7.1 16.9L5.45 18.55M18.55 18.55L16.9 16.9M7.1 7.1L5.45 5.45" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18.4 14.2C17.38 14.72 16.23 15 15 15C10.86 15 7.5 11.64 7.5 7.5C7.5 6.27 7.78 5.12 8.3 4.1C5.33 5.18 3.2 8.03 3.2 11.4C3.2 15.71 6.69 19.2 11 19.2C14.37 19.2 17.22 17.07 18.4 14.2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
                         <span class="theme-toggle__dot" aria-hidden="true"></span>
                     </button>
                 </div>
